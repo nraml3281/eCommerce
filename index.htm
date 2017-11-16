@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+    <style>
+        h1 {
+            background-color: black;
+            color: white;
+            text-align: center;
+            text-shadow: 2px 2px 5px red;
+        }
+        input {
+            width:100px;
+        }
+        p {
+            border: 3px solid powderblue;
+            background-color: black;
+            color:white;
+            padding: 30px;
+            text-align: center;
+            font-size: 10pt;
+            text-shadow: 2px 2px 5px red;
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+        div {
+            text-align: center;
+        }
+        #op1 {
+            border: 3px solid powderblue;
+            background-color: black;
+            color:white;
+            padding: 30px;
+            text-align: center;
+            font-size: 10pt;
+            text-shadow: 2px 2px 5px red;
+        }
+        #op2 {
+            border: 3px solid powderblue;
+            background-color: black;
+            color:white;
+            padding: 30px;
+            text-align: center;
+            font-size: 10pt;
+            text-shadow: 2px 2px 5px red;
+        }
+    </style>
+
+    <script>
+        var p1,p2,p3,tr,wp1,wp2,wp3;
+        p1 = 20;
+        p2 = 25;
+        p3 = 30;
+        wp1 = 10;
+        wp2 = 15;
+        wp3 = 20;
+        tr = 8.75; 
+        function ip(){
+            document.getElementById("s1").innerHTML = "Price: $" +p1;
+            document.getElementById("s2").innerHTML = "Price: $" +p2;
+            document.getElementById("s3").innerHTML = "Price: $" +p3;
+        }
+        function OP(){
+            var q1,q2,q3,op1,op2,C_ST,Cumpany_ST,tax,S,total,P,TIS;
+            q1 = parseFloat(document.getElementById("q1").value);
+            q2 = parseFloat(document.getElementById("q2").value);
+            q3 = parseFloat(document.getElementById("q3").value);
+            op1 = document.getElementById("op1");
+            op2 = document.getElementById("op2");
+            C_ST = (q1*p1)+(q2*p2)+(q3*p3);
+            Cumpany_ST = (wp1*q1)+(wp2*q2)+(wp3*q3);
+            tax = C_ST*.0875;
+            P = (C_ST-Cumpany_ST);
+            TIS = q1+q2+q3;
+            if(C_ST<100){
+                S=25;
+            }else if(C_ST>100 && C_ST<200){
+                S=10
+            }else{
+                S=0
+            }
+            
+            total=C_ST+tax+S;
+            op1.innerHTML+="Custumer info:<br>Subtotal: $" +C_ST;
+            op1.innerHTML+="<br>Tax: $"+tax;
+            op1.innerHTML+="<br>Shipping: $"+S;
+            op1.innerHTML+="<br>Total: $"+total;
+            op2.innerHTML+="-----------------------<br>Company info:";
+            op2.innerHTML+="<br>Total Items Sold: "+TIS;
+            op2.innerHTML+="<br>Customer Subtotal: $"+C_ST;
+            op2.innerHTML+="<br>Company Subtotal: $"+Cumpany_ST;
+            op2.innerHTML+="<br>Profit: $" +P;
+        }
+        
+
+    </script>
+    
+</head>
+<body onload="ip()">
+    <h1>My Store</h1>
+    <div>
+        <img src="f1.JPG"><br>
+        <p>Item description<br>
+        <span id="s1"></spam>
+        </p>
+        <input value="5" type="text" id="q1"placeholder="enter quantity #">
+    </div>
+    <hr>
+    <div>
+        <img src="f2.JPG"><br>
+        <p>Item description<br>
+        <span id="s2"></spam>        </p>
+        <input value="5" type="text" id="q2"placeholder="enter quantity #">
+    </div>
+    <hr>
+    <div>
+        <img src="f3.JPG"><br>
+        <p>Item description<br>
+        <span id="s3"></spam>
+        </p>
+        <input value="5" type="text" id="q3"placeholder="enter quantity #" >
+    </div>
+    <div><button onclick="OP()">Process Order</button></div>
+    <div id="op1"></div>
+    <div id="op2"></div>
+</body>
+</html>
